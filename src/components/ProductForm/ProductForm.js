@@ -1,8 +1,8 @@
 import styles from './ProductForm.module.scss';
 import PropTypes from 'prop-types';
 import Button from '../Button/Button';
-import clsx from 'clsx';
 import OptionColor from '../OptionColor/OptionColor';
+import OptionSize from '../OptionSize/OptionSize';
 
 const ProductForm = props => {
 
@@ -23,27 +23,21 @@ const ProductForm = props => {
 
   return (
     <form>
-      <div className={styles.sizes}>
-        <h3 className={styles.optionLabel}>Sizes</h3>
-        <ul className={styles.choices}>
-          {props.sizes.map(size => 
-            <li key={props.sizes[props.sizes.indexOf(size)].name}><button 
-            type="button" 
-            onClick={() => {props.handleSizeChange(size)}} 
-            className={clsx(size.name === props.currentSize && styles.active)}>{props.sizes[props.sizes.indexOf(size)].name}</button>
-            </li>)}
-        </ul>
-      </div>
+      <OptionSize
+        currentSize={props.currentSize}
+        sizes={props.sizes}
+        handleSizeChange={props.handleSizeChange} 
+      />
       <OptionColor 
         currentColor={props.currentColor} 
         colors={props.colors} 
         handleColorChange={props.handleColorChange} 
-        choicesStyles={styles.choices} 
-        optionLabelStyles={styles.optionLabel}/>
+      />
       <Button 
         className={styles.button} 
         onClick={(e) => {handleCartButton(e)}}>
-        <span className="fa fa-shopping-cart" />
+        <span className="fa fa-shopping-cart" 
+      />
       </Button>
     </form>
   )
