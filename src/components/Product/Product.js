@@ -18,7 +18,12 @@ const Product = props => {
   }
 
   const handleColorChange = color => {
-    setCurrentColor(props.colors[props.colors.indexOf(color)])
+    setCurrentColor(props.colors[props.colors.indexOf(color)]);
+  }
+
+  const getPrice = currentSize => {
+    const currentSizeObj = props.sizes.find(size => size.name === currentSize)
+    return props.basePrice + currentSizeObj.additionalPrice;
   }
 
   return (
@@ -32,7 +37,7 @@ const Product = props => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>{props.basePrice}$</span>
+          <span className={styles.price}>Price: {getPrice(currentSize)}$</span>
         </header>
         <form>
           <div className={styles.sizes}>
