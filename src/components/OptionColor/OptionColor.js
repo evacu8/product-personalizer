@@ -15,7 +15,7 @@ const OptionColor = props => {
         {props.colors.map(color => 
           <li key={props.colors[props.colors.indexOf(color)]}><button 
           type="button"
-          onClick={() => {props.handleColorChange(color)}}  
+          onClick={() => {props.setCurrentColor(props.colors[props.colors.indexOf(color)])}}  
           className={clsx(prepareColorClassName(color), color === props.currentColor && styles.active)} />
           </li>)}
       </ul>
@@ -26,7 +26,7 @@ const OptionColor = props => {
 OptionColor.propTypes = {
   currentColor: PropTypes.string.isRequired,
   colors: PropTypes.array.isRequired,
-  handleColorChange: PropTypes.func.isRequired,
+  setCurrentColor: PropTypes.func.isRequired,
 };
 
 export default OptionColor;

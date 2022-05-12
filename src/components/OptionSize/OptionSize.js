@@ -11,7 +11,7 @@ const OptionSize = props => {
       {props.sizes.map(size => 
         <li key={props.sizes[props.sizes.indexOf(size)].name}><button 
         type="button" 
-        onClick={() => {props.handleSizeChange(size)}} 
+        onClick={() => {props.setCurrentSize(props.sizes[props.sizes.indexOf(size)].name)}} 
         className={clsx(size.name === props.currentSize && styles.active)}>{props.sizes[props.sizes.indexOf(size)].name}</button>
         </li>)}
     </ul>
@@ -22,7 +22,7 @@ const OptionSize = props => {
 OptionSize.propTypes = {
   currentSize: PropTypes.string.isRequired,
   sizes: PropTypes.array.isRequired,
-  handleSizeChange: PropTypes.func.isRequired
+  setCurrentSize: PropTypes.func.isRequired
 };
 
 export default OptionSize;

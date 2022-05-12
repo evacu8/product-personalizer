@@ -26,15 +26,15 @@ const ProductForm = props => {
       <OptionSize
         currentSize={props.currentSize}
         sizes={props.sizes}
-        handleSizeChange={props.handleSizeChange} 
+        setCurrentSize={props.setCurrentSize} 
       />
       <OptionColor 
         currentColor={props.currentColor} 
         colors={props.colors} 
-        handleColorChange={props.handleColorChange} 
+        setCurrentColor={props.setCurrentColor} 
       />
       <Button 
-        className={styles.button} 
+        className={styles.button}  
         onClick={(e) => {handleCartButton(e)}}>
         <span className="fa fa-shopping-cart" 
       />
@@ -50,8 +50,8 @@ ProductForm.propTypes = {
   title: PropTypes.string.isRequired,
   colors: PropTypes.array.isRequired,
   sizes: PropTypes.array.isRequired,
-  handleColorChange: PropTypes.func.isRequired,
-  handleSizeChange: PropTypes.func.isRequired,
+  setCurrentColor: PropTypes.func.isRequired,
+  setCurrentSize: PropTypes.func.isRequired,
 };
 
 export default ProductForm;
