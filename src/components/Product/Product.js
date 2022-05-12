@@ -2,6 +2,7 @@ import styles from './Product.module.scss';
 import { useState } from 'react';
 import clsx from 'clsx';
 import Button from '../Button/Button';
+import ProductImage from '../ProductImage/ProductImage';
 import PropTypes from 'prop-types';
 
 const Product = props => {
@@ -43,12 +44,7 @@ const Product = props => {
 
   return (
     <article className={styles.product}>
-      <div className={styles.imageContainer}>
-      <img
-        className={styles.image}
-        alt={`${props.name} shirt`}
-        src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${currentColor}.jpg`} />
-      </div>
+      <ProductImage name={props.name} currentColor={currentColor}/>
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
