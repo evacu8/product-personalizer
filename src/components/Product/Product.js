@@ -26,6 +26,21 @@ const Product = props => {
     return props.basePrice + currentSizeObj.additionalPrice;
   }
 
+  const prepareSummary = props => {
+    console.log(
+      `SUMMARY
+      =======
+      NAME: ${props.title}
+      PRICE: ${getPrice(currentSize)}
+      SIZE: ${currentSize}
+      COLOR: ${currentColor}`);
+  }
+
+  const handleCartButton = e => {
+    e.preventDefault();
+    prepareSummary(props);
+  }
+
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
@@ -62,7 +77,9 @@ const Product = props => {
                 </li>)}
             </ul>
           </div>
-          <Button className={styles.button}>
+          <Button 
+            className={styles.button} 
+            onClick={(e) => {handleCartButton(e)}}>
             <span className="fa fa-shopping-cart" />
           </Button>
         </form>
