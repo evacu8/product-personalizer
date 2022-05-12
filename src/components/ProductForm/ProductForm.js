@@ -2,12 +2,9 @@ import styles from './ProductForm.module.scss';
 import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 import clsx from 'clsx';
+import OptionColor from '../OptionColor/OptionColor';
 
 const ProductForm = props => {
-
-  const prepareColorClassName = color => {
-    return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
-  }
 
   const prepareSummary = props => {
     console.log(
@@ -37,17 +34,12 @@ const ProductForm = props => {
             </li>)}
         </ul>
       </div>
-      <div className={styles.colors}>
-        <h3 className={styles.optionLabel}>Colors</h3>
-        <ul className={styles.choices}>
-          {props.colors.map(color => 
-            <li key={props.colors[props.colors.indexOf(color)]}><button 
-            type="button"
-            onClick={() => {props.handleColorChange(color)}}  
-            className={clsx(prepareColorClassName(color), color === props.currentColor && styles.active)} />
-            </li>)}
-        </ul>
-      </div>
+      <OptionColor 
+        currentColor={props.currentColor} 
+        colors={props.colors} 
+        handleColorChange={props.handleColorChange} 
+        choicesStyles={styles.choices} 
+        optionLabelStyles={styles.optionLabel}/>
       <Button 
         className={styles.button} 
         onClick={(e) => {handleCartButton(e)}}>
